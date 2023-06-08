@@ -1,3 +1,5 @@
+const dotenv= require('dotenv');
+dotenv.config();
 const express = require('express');
 const app = express();
 const userRoutes = require('./routes/userRoutes')
@@ -16,7 +18,7 @@ app.use('/users', userRoutes)
 require('./connection')
 
 const server = require('http').createServer(app);
-const PORT = 5001;
+const PORT = 5001|| process.env.PORT;
 const io = require('socket.io')(server, {
   cors: {
     origin: 'http://localhost:3000',
